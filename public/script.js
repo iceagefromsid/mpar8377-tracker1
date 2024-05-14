@@ -1,5 +1,4 @@
 function openForm() {
-  // Open a new pop-up window centered on the screen
   const width = 400;
   const height = 400;
   const left = (window.innerWidth - width) / 2;
@@ -7,63 +6,109 @@ function openForm() {
   const features = `width=${width},height=${height},left=${left},top=${top}`;
   const popup = window.open('', 'CoffeeCounterPopUp', features);
 
-  // Write the HTML content for the pop-up window
   popup.document.write(`
-    <!DOCTYPE html>
-    <html>
+      <!DOCTYPE html>
+      <html>
       <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Add Coffee Count</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width">
+          <title>Add Coffee Count</title>
       </head>
       <body>
-        <form id="taskform">
-          <label for="task">Task:</label>
-          <input type="text" name="task" id="taskInput">
-          <br>
-          <!-- Date input -->
-          <label for="dueDate">Due Date: </label>
-          <input type="date" name="dueDate" id="dueDateInput">
-          <br>
-          <!-- Time input -->
-          <label for="completionTime">Completion Time: </label>
-          <input type="time" name="completionTime" id="completionTimeInput">
-          <br>
-          <label for="estimatedTime">Estimated completion time (in mins):</label>
-          <input type="number" name="estimatedTime" id="estimatedTimeInput">
-          <!-- Priority -->
-          <br>
-          <label for="priority">Task Priority:</label>
-          <select name="prority" id="priorityInput">
-            <option value="">Select one</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-          <br>
-          <button type="button" onclick="submitForm()">Submit</button>
-        </form>
+          <form id="coffeeForm">
+              <label for="date">Date:</label>
+              <input type="date" id="date" required><br>
+              <label for="time">Time:</label>
+              <input type="time" id="time" required><br>
+              <label for="location">Location:</label>
+              <input type="text" id="location" required><br>
+              <label for="type">Coffee Type:</label>
+              <input type="text" id="type" required><br>
+              <label for="rating">Rating (1-5):</label>
+              <input type="number" id="rating" min="1" max="5" required><br>
+              <button type="button" onclick="submitForm()">Submit</button>
+          </form>
+          <script>
+              function submitForm() {
+                  const date = document.getElementById('date').value;
+                  const time = document.getElementById('time').value;
+                  const location = document.getElementById('location').value;
+                  const type = document.getElementById('type').value;
+                  const rating = document.getElementById('rating').value;
+                  const coffee = { date, time, location, type, rating };
+
+                  const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
+                  coffeeList.push(coffee);
+                  localStorage.setItem('coffees', JSON.stringify(coffeeList));
+
+                  window.opener.updateCoffeeList();
+                  window.close();
+              }
+          </script>
       </body>
-    </html>
+      </html>
   `);
 }
 
-function submitForm() {
-  // Get the form elements from the pop-up window
-  const taskInput = window.opener.document.getElementById("taskInput").value;
-  const dueDateInput = window.opener.document.getElementById("dueDateInput").value;
-  const completionTimeInput = window.opener.document.getElementById("completionTimeInput").value;
-  const estimatedTimeInput = window.opener.document.getElementById("estimatedTimeInput").value;
-  const priorityInput = window.opener.document.getElementById("priorityInput").value;
-
-  // Close the pop-up window
-  window.close();
-
-  // You can now use the form data as needed, such as sending it to a server or storing it locally.
-  // Example:
-  console.log("Task:", taskInput);
-  console.log("Due Date:", dueDateInput);
-  console.log("Completion Time:", completionTimeInput);
-  console.log("Estimated Completion Time:", estimatedTimeInput);
-  console.log("Priority:", priorityInput);
+function scrollToCoffees() {
+  document.querySelector('.coffee-list-section').style.display = 'block';
+  document.getElementById('coffeeListSection').scrollIntoView({ behavior: 'smooth' });
 }
+
+function updateCoffeeList() {
+  const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
+  const coffeeListDiv = document.getElementById('coffeeList');
+  coffeeListDiv.innerHTML = '';
+
+  coffeeList.forEach(coffee => {
+      const coffeeItem = document.createElement('div');
+      coffeeItem.classList.add('coffee-item');
+      coffeeItem.innerHTML = `
+          <p>Date: ${coffee.date}</p>
+          <p>Time: ${coffee.time}</p>
+          <p>Location: ${coffee.location}</p>
+          <p>Type: ${coffee.type}</p>
+          <p>Rating: ${coffee.rating}</p>
+      `;
+      coffeeListDiv.appendChild(coffeeItem);
+  });
+}
+
+function sortCoffees() {
+  const sortOption = document.getElementById('sortOptions').value;
+  let coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
+
+  switch (sortOption) {
+      case 'ratingHighLow':
+          coffeeList.sort((a, b) => b.rating - a.rating);
+          break;
+      case 'ratingLowHigh':
+          coffeeList.sort((a, b) => a.rating - b.rating);
+          break;
+      case 'newOld':
+          coffeeList.sort((a, b) => new Date(b.date) - new Date(a.date));
+          break;
+      case 'oldNew':
+          coffeeList.sort((a, b) => new Date(a.date) - new Date(b.date));
+          break;
+  }
+
+  localStorage.setItem('coffees', JSON.stringify(coffeeList));
+  updateCoffeeList();
+}
+
+document.getElementById('searchBar').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  const coffeeItems = document.querySelectorAll('.coffee-item');
+
+  coffeeItems.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (text.includes(query)) {
+          item.style.display = '';
+      } else {
+          item.style.display = 'none';
+      }
+  });
+});
+
+window.onload = updateCoffeeList;

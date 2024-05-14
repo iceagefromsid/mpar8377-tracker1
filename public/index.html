@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoffeeCounter</title>
-    <link href="./scss/main.scss" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <!-- Button to open the pop-up window -->
-    <button onclick="openForm()">Add Coffee Count!</button>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="center-content">
+        <h1 class="site-name">CoffeeCounter</h1>
+        <button class="add-tracker-btn" onclick="openForm()">Add a new tracker</button>
+    </div>
+
+    <div class="scroll-down">
+        <button onclick="scrollToCoffees()" class="down-arrow">↓</button>
+    </div>
+
+    <div class="coffee-list-section" id="coffeeListSection">
+        <input type="text" id="searchBar" placeholder="Search for a coffee...">
+        <select id="sortOptions" onchange="sortCoffees()">
+            <option value="ratingHighLow">Rating: High - Low</option>
+            <option value="ratingLowHigh">Rating: Low - High</option>
+            <option value="newOld">New - Old</option>
+            <option value="oldNew">Old - New</option>
+        </select>
+        <div id="coffeeList"></div>
+    </div>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
