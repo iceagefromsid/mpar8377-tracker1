@@ -56,5 +56,5 @@ Planning:
     - 
 
 References:
-- Pop-Up Window: chat got was used alongside WS3 Schools to build the pop-up window. The prompt given was as follows "please build a pop-up window which will house the following functions:" (with the functions currently within the window.).
-- 
+- Pop-Up Window: chatgpt got was used alongside WS3 Schools to build the pop-up window. The prompt given was as follows "please build a pop-up window which will house the following functions:" (with the functions currently within the window.).
+- Storing of Data: Generative AI was used alongside personal research to implement the storing of data and the following usage of said data. prompt = "please show me a way to store user input data and then to use it."
