@@ -50,11 +50,6 @@ function openForm() {
   `);
 }
 
-function scrollToCoffees() {
-  document.querySelector('.coffee-list-section').style.display = 'block';
-  document.getElementById('coffeeListSection').scrollIntoView({ behavior: 'smooth' });
-}
-
 function updateCoffeeList() {
   const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
   const coffeeListDiv = document.getElementById('coffeeList');
@@ -72,6 +67,9 @@ function updateCoffeeList() {
       `;
       coffeeListDiv.appendChild(coffeeItem);
   });
+
+  // Show the coffee list section
+  document.getElementById('coffeeListSection').style.display = 'block';
 }
 
 function sortCoffees() {
@@ -110,5 +108,11 @@ document.getElementById('searchBar').addEventListener('input', function() {
       }
   });
 });
+
+function scrollToCoffeeList() {
+  const coffeeListSection = document.getElementById('coffeeListSection');
+  coffeeListSection.style.display = 'block';
+  coffeeListSection.scrollIntoView({ behavior: 'smooth' });
+}
 
 window.onload = updateCoffeeList;

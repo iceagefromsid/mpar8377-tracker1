@@ -47,13 +47,19 @@ Style and Design Principles:
  - Relevant UI design trends and best practices are expertly incorporated.
 
 Planning:
+* = tbd
 - create a single page
     - contains a large bolded text stating the name of the site (CoffeeCounter) in the center of the screen with the add a new tracker button underneath it in small italics font allowing the user to open the pop-up input menu which lets them input data.
         - the pop-up window of the add a new coffee button should contain the following: Date, Time, Location, Coffee Type, Rating (1-5).
     - have a button (a large downwards facing arrow) which scrolls the page down to see the different coffees which have previously been tracked.
+        - *The scroll function should move the whole screen a full page down, showing the results of previous inputs and offer the user the search and sort functions* 
         - within this part of the page which has previously added coffees, add a sort function which lets you change the order of coffees based on specific criteria (Rating High - Low, Rating Low - High, New - Old, Old - New)
         - also add a search bar near the top of the screen which lets the user search for specific keywords to find the specific coffee they are looking for.
-    - 
+    - Add a coffee logo to the screen
+    - add javascript elements which make the screen more interactive, e.g. a hover which makes the text move a bit (search the internet for inspiration)
+    - make all of the transitions and smooth and nice to look at
+    - change the pop-up window to match the text and style of the page
+    - make the pop-up window have mandatory inputs (if possible)
 
 References:
 - Pop-Up Window: chatgpt got was used alongside WS3 Schools to build the pop-up window. The prompt given was as follows "please build a pop-up window which will house the following functions:" (with the functions currently within the window.).
