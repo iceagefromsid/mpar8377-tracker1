@@ -45,7 +45,8 @@ body {
 
 /* Styling for the section with the coffee list */
 .coffee-list-section {
-    padding: 20px;
+    margin-top:10%;
+    padding-bottom: -100vh;
     display: none; /* Initially hidden, can be toggled with JavaScript */
 }
 
@@ -53,6 +54,7 @@ body {
 #searchBar {
     width: 80%;
     padding: 10px;
+    /* margin-top:100%; */
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -62,6 +64,7 @@ body {
 #sortOptions {
     padding: 10px;
     margin-bottom: 20px;
+
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -85,16 +88,12 @@ body {
 }
 
 /* Styling for the down arrow button */
-.scroll-down {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-}
+
 
 .down-arrow {
     font-size: 32px;
     border: none;
     background: none;
+    padding-top:90vh;
     cursor: pointer;
 }

@@ -108,11 +108,8 @@ document.getElementById('searchBar').addEventListener('input', function() {
       }
   });
 });
-
-function scrollToCoffeeList() {
-  const coffeeListSection = document.getElementById('coffeeListSection');
-  coffeeListSection.style.display = 'block';
-  coffeeListSection.scrollIntoView({ behavior: 'smooth' });
+function scrollDown() {
+  window.scroll(0, window.scrollY + innerHeight);
 }
 
 window.onload = updateCoffeeList;
