@@ -1,52 +1,94 @@
 function openForm() {
-  const width = 400;
-  const height = 400;
+  const width = window.innerWidth / 2;
+  const height = window.innerHeight / 2;
   const left = (window.innerWidth - width) / 2;
   const top = (window.innerHeight - height) / 2;
   const features = `width=${width},height=${height},left=${left},top=${top}`;
   const popup = window.open('', 'CoffeeCounterPopUp', features);
 
   popup.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width">
-          <title>Add Coffee Count</title>
-      </head>
-      <body>
-          <form id="coffeeForm">
-              <label for="date">Date:</label>
-              <input type="date" id="date" required><br>
-              <label for="time">Time:</label>
-              <input type="time" id="time" required><br>
-              <label for="location">Location:</label>
-              <input type="text" id="location" required><br>
-              <label for="type">Coffee Type:</label>
-              <input type="text" id="type" required><br>
-              <label for="rating">Rating (1-5):</label>
-              <input type="number" id="rating" min="1" max="5" required><br>
-              <button type="button" onclick="submitForm()">Submit</button>
-          </form>
-          <script>
-              function submitForm() {
-                  const date = document.getElementById('date').value;
-                  const time = document.getElementById('time').value;
-                  const location = document.getElementById('location').value;
-                  const type = document.getElementById('type').value;
-                  const rating = document.getElementById('rating').value;
-                  const coffee = { date, time, location, type, rating };
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Add Coffee Count</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          margin: 0;
+          padding: 20px;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        label {
+          font-size: 16px;
+          margin: 10px 0 5px;
+        }
+        input {
+          padding: 5px;
+          margin-bottom: 10px;
+          width: 80%;
+        }
+        button {
+          padding: 10px 20px;
+          border: none;
+          background-color: #4CAF50;
+          color: white;
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 16px;
+          margin-top: 10px;
+        }
+        button:hover {
+          background-color: #45a049;
+        }
+        canvas {
+          border: 1px solid #000;
+          margin-top: 10px;
+        }
+      </style>
+    </head>
+    <body>
+      <form id="coffeeForm">
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+        <label for="location">Location:</label>
+        <input type="text" id="location" required>
+        <label for="type">Coffee Type:</label>
+        <input type="text" id="type" required>
+        <label for="rating">Rating (1-5):</label>
+        <input type="number" id="rating" min="1" max="5" required>
+        <button type="button" onclick="submitForm()">Submit</button>
+      </form>
+      <script>
 
-                  const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
-                  coffeeList.push(coffee);
-                  localStorage.setItem('coffees', JSON.stringify(coffeeList));
+        function submitForm() {
+          const date = document.getElementById('date').value;
+          const time = document.getElementById('time').value;
+          const location = document.getElementById('location').value;
+          const type = document.getElementById('type').value;
+          const rating = document.getElementById('rating').value;
 
-                  window.opener.updateCoffeeList();
-                  window.close();
-              }
-          </script>
-      </body>
-      </html>
+
+          const coffee = { date, time, location, type, rating};
+
+          const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
+          coffeeList.push(coffee);
+          localStorage.setItem('coffees', JSON.stringify(coffeeList));
+
+          window.opener.updateCoffeeList();
+          window.close();
+        }
+      </script>
+    </body>
+    </html>
   `);
 }
 
@@ -56,22 +98,25 @@ function updateCoffeeList() {
   coffeeListDiv.innerHTML = '';
 
   coffeeList.forEach(coffee => {
-      const coffeeItem = document.createElement('div');
-      coffeeItem.classList.add('coffee-item');
-      coffeeItem.innerHTML = `
-          <p>Date: ${coffee.date}</p>
-          <p>Time: ${coffee.time}</p>
-          <p>Location: ${coffee.location}</p>
-          <p>Type: ${coffee.type}</p>
-          <p>Rating: ${coffee.rating}</p>
-      `;
-      coffeeListDiv.appendChild(coffeeItem);
+    const coffeeItem = document.createElement('div');
+    coffeeItem.classList.add('coffee-item');
+    coffeeItem.innerHTML = `
+      <p>Date: ${coffee.date}</p>
+      <p>Time: ${coffee.time}</p>
+      <p>Location: ${coffee.location}</p>
+      <p>Type: ${coffee.type}</p>
+      <p>Rating: ${coffee.rating}</p>
+    `;
+    coffeeListDiv.appendChild(coffeeItem);
   });
 
   // Show the coffee list section
   document.getElementById('coffeeListSection').style.display = 'block';
 }
 
+function scrollToCoffeeList() {
+  document.getElementById('coffeeListSection').scrollIntoView({ behavior: 'smooth' });
+}
 function sortCoffees() {
   const sortOption = document.getElementById('sortOptions').value;
   let coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
