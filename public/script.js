@@ -29,7 +29,7 @@ function openForm() {
           font-size: 16px;
           margin: 10px 0 5px;
         }
-        input {
+        input, select {
           padding: 5px;
           margin-bottom: 10px;
           width: 80%;
@@ -47,10 +47,6 @@ function openForm() {
         button:hover {
           background-color: #45a049;
         }
-        canvas {
-          border: 1px solid #000;
-          margin-top: 10px;
-        }
       </style>
     </head>
     <body>
@@ -62,22 +58,35 @@ function openForm() {
         <label for="location">Location:</label>
         <input type="text" id="location" required>
         <label for="type">Coffee Type:</label>
-        <input type="text" id="type" required>
+        <select id="type" required>
+          <option value="Espresso">Espresso</option>
+          <option value="Latte">Latte</option>
+          <option value="Black-Coffee">Black Coffee</option>
+          <option value="Mocha">Mocha</option>
+          <option value="Americano">Americano</option>
+          <option value="Cappuccino">Cappuccino</option>
+          <option value="Flat-White">Flat White</option>
+          <option value="Cafe-au-Lait">Cafe au Lait</option>
+          <option value="Macchiato">Macchiato</option>
+          <option value="Cold-Brew">Cold Brew</option>
+          <option value="Irish-Coffee">Irish Coffee</option>
+          <option value="Frappe">Frappe</option>
+          <option value="Vietnamese-Coffee">Vietnamese Coffee</option>
+          <option value="Affogato">Affogato</option>
+          <option value="Red-Eye">Red Eye</option>
+        </select>
         <label for="rating">Rating (1-5):</label>
         <input type="number" id="rating" min="1" max="5" required>
         <button type="button" onclick="submitForm()">Submit</button>
       </form>
       <script>
-
         function submitForm() {
           const date = document.getElementById('date').value;
           const time = document.getElementById('time').value;
           const location = document.getElementById('location').value;
           const type = document.getElementById('type').value;
           const rating = document.getElementById('rating').value;
-
-
-          const coffee = { date, time, location, type, rating};
+          const coffee = { date, time, location, type, rating };
 
           const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
           coffeeList.push(coffee);
@@ -91,7 +100,6 @@ function openForm() {
     </html>
   `);
 }
-
 function updateCoffeeList() {
   const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
   const coffeeListDiv = document.getElementById('coffeeList');
@@ -100,7 +108,9 @@ function updateCoffeeList() {
   coffeeList.forEach(coffee => {
     const coffeeItem = document.createElement('div');
     coffeeItem.classList.add('coffee-item');
+    const coffeeImage = `images/${coffee.type.replace(/\s+/g, '')}.jpeg`;
     coffeeItem.innerHTML = `
+      <img src="${coffeeImage}" alt="${coffee.type}" style="width:100px;height:100px;">
       <p>Date: ${coffee.date}</p>
       <p>Time: ${coffee.time}</p>
       <p>Location: ${coffee.location}</p>
@@ -117,23 +127,24 @@ function updateCoffeeList() {
 function scrollToCoffeeList() {
   document.getElementById('coffeeListSection').scrollIntoView({ behavior: 'smooth' });
 }
+
 function sortCoffees() {
   const sortOption = document.getElementById('sortOptions').value;
   let coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
 
   switch (sortOption) {
-      case 'ratingHighLow':
-          coffeeList.sort((a, b) => b.rating - a.rating);
-          break;
-      case 'ratingLowHigh':
-          coffeeList.sort((a, b) => a.rating - b.rating);
-          break;
-      case 'newOld':
-          coffeeList.sort((a, b) => new Date(b.date) - new Date(a.date));
-          break;
-      case 'oldNew':
-          coffeeList.sort((a, b) => new Date(a.date) - new Date(b.date));
-          break;
+    case 'ratingHighLow':
+      coffeeList.sort((a, b) => b.rating - a.rating);
+      break;
+    case 'ratingLowHigh':
+      coffeeList.sort((a, b) => a.rating - b.rating);
+      break;
+    case 'newOld':
+      coffeeList.sort((a, b) => new Date(b.date) - new Date(a.date));
+      break;
+    case 'oldNew':
+      coffeeList.sort((a, b) => new Date(a.date) - new Date(b.date));
+      break;
   }
 
   localStorage.setItem('coffees', JSON.stringify(coffeeList));
@@ -145,16 +156,13 @@ document.getElementById('searchBar').addEventListener('input', function() {
   const coffeeItems = document.querySelectorAll('.coffee-item');
 
   coffeeItems.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (text.includes(query)) {
-          item.style.display = '';
-      } else {
-          item.style.display = 'none';
-      }
+    const text = item.textContent.toLowerCase();
+    if (text.includes(query)) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
   });
 });
-function scrollDown() {
-  window.scroll(0, window.scrollY + innerHeight);
-}
 
 window.onload = updateCoffeeList;
