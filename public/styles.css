@@ -1,15 +1,74 @@
 /* Smooth scrolling for in-page navigation */
+.jaro-uniquifier> {
+  font-family: "Jaro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jersey-10-regular {
+    font-family: "Jersey 15", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+  
+.caveat-uniquifier> {
+font-family: "Caveat", cursive;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal;
+}
+  
+
 * {
     scroll-behavior: smooth;
+    
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Caveat", cursive;
     text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 0;    
+    background-color: rgba(166,124,84,0.4);
+    font-size: 2.5em;
+
+    
+}
+.background-image {
+    /* Set the background image */
+    background-image: url('images/coffeeBackground.jpeg');
+    height: 100vh;
+    /* Ensure the image covers the entire div */
+    background-size: cover;
+    
+    /* Center the background image */
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
+img {
+    align-items:center;
+    border: 4px solid brown;
+    border-radius: 25%;
+    /* padding: 5px; */
+    width: 75%;
+}
+
+h1 {
+    font-family:"Jaro", sans-serif;
+    text-align:center;
+    margin: 0;
+    padding: 0;
+    
+}
 /* Centering the main content */
 .center-content {
     position: absolute;
@@ -39,7 +98,7 @@ body {
 }
 
 .add-tracker-btn:hover {
-    background-color: #45a049;
+    background-color: #3d8e41;
 }
 
 /* Styling for the section with the coffee list */
@@ -70,6 +129,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: left;
 }
 
 /* Styling individual coffee items */
@@ -81,6 +141,30 @@ body {
     width: 80%;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    font-size: 0.8em;
+}
+
+.coffee-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.coffee-details {
+    flex-grow: 1;
+}
+
+.coffee-details p {
+    margin: 5px 0;
+}
+
+.rating {
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* Styling for the down arrow button */
@@ -88,6 +172,45 @@ body {
     font-size: 32px;
     border: none;
     background: none;
-    padding-top: 90vh;
     cursor: pointer;
+    vertical-align: bottom;
+    margin-top: 90vh;
 }
+/* Styling for the "Clear All" button */
+.clear-all-btn {
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #f44336;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.clear-all-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Shaking animation */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  
+  /* Apply the shaking animation on hover */
+  .coffee-item img:hover {
+    animation: shake 0.5s; /* Animation duration */
+    animation-iteration-count: infinite; /* Repeat the animation indefinitely */
+  }

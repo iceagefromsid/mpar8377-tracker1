@@ -100,6 +100,7 @@ function openForm() {
     </html>
   `);
 }
+
 function updateCoffeeList() {
   const coffeeList = JSON.parse(localStorage.getItem('coffees')) || [];
   const coffeeListDiv = document.getElementById('coffeeList');
@@ -121,7 +122,7 @@ function updateCoffeeList() {
   });
 
   // Show the coffee list section
-  document.getElementById('coffeeListSection').style.display = 'block';
+  document.getElementById('coffeeListSection').style.display =  'block';
 }
 
 function scrollToCoffeeList() {
@@ -164,5 +165,9 @@ document.getElementById('searchBar').addEventListener('input', function() {
     }
   });
 });
+
+function scrollDown() {
+  window.scrollBy(0, outerHeight);
+}
 
 window.onload = updateCoffeeList;

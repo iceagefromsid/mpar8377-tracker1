@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoffeeCounter</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoffeeCounter</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+15&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="center-content">
-        <h1 class="site-name">Coffee Counter</h1>
-        <button class="add-tracker-btn" onclick="openForm()">Add a new tracker!</button>
-    </div>
+  <div class="background-image">
+    <button class="down-arrow" onclick="scrollDown()">↓</button>  
+  </div>
+  <div>
+    <img id = coffeeKey src = "images/coffeeKey.jpeg">
+  </div>
+  
+  <div class="center-content">
+    <h1 class="site-name">Coffee Counter</h1>
+    <button class="add-tracker-btn" onclick="openForm()">Add a new tracker!</button>
+    <button class="clear-all-btn" onclick="clearAllCoffees()">Clear All</button>
+  </div>
 
-    <div>
-        <button class="down-arrow" onclick="scrollDown()">↓</button> 
-    </div>
+  <div class="coffee-list-section" id="coffeeListSection">
+    <input type="text" id="searchBar" placeholder="Search for a coffee...">
+    <select id="sortOptions" onchange="sortCoffees()">
+      <option value="ratingHighLow">Rating: High - Low</option>
+      <option value="ratingLowHigh">Rating: Low - High</option>
+      <option value="newOld">Recent: New - Old</option>
+      <option value="oldNew">Recent: Old - New</option>
+    </select>
+    <div id="coffeeList"></div>
+  </div>
 
-    <div class="coffee-list-section" id="coffeeListSection">
-        <input type="text" id="searchBar" placeholder="Search for a coffee...">
-        <select id="sortOptions" onchange="sortCoffees()">
-            <option value="ratingHighLow">Rating: High - Low</option>
-            <option value="ratingLowHigh">Rating: Low - High</option>
-            <option value="newOld">New - Old</option>
-            <option value="oldNew">Old - New</option>
-        </select>
-        <div id="coffeeList"></div>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
