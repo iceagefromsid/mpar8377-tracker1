@@ -64,3 +64,8 @@ Planning:
 References:
 - Pop-Up Window: chatgpt got was used alongside WS3 Schools to build the pop-up window. The prompt given was as follows "please build a pop-up window which will house the following functions:" (with the functions currently within the window.).
 - Storing of Data: Generative AI was used alongside personal research to implement the storing of data and the following usage of said data. prompt = "please show me a way to store user input data and then to use it."
+- Shake for images: generative AI was used to add a shaking animation over the images when the user hovers over them. the prompt given was along the lines of " How would i go about making an image shake in javascript css."
+- The data storage and facilitating: The data storage was built alongside w3s schools and generative AI in order to create a fully usable system. the prompt which was imputted into generative ai was " how would I store data from a user input field and then output it". I also used w3s schools to gain more background knowledge about the actual storage of it.
+- https://fonts.google.com/selection/embed 
+- https://www.w3schools.com/ 
+- https://www.thirdwavecoffeeroasters.com

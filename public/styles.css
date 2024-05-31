@@ -1,52 +1,25 @@
-/* Smooth scrolling for in-page navigation */
-.jaro-uniquifier> {
-  font-family: "Jaro", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.jersey-10-regular {
-    font-family: "Jersey 15", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-
-  
-.caveat-uniquifier> {
-font-family: "Caveat", cursive;
-font-optical-sizing: auto;
-font-weight: 400;
-font-style: normal;
-}
-  
-
-* {
-    scroll-behavior: smooth;
-    
-}
-
-body {
-    font-family: "Caveat", cursive;
+body { 
+    /* basic body adjustments for text and spacing  */
+    font-family: "Lexend Deca", sans-serif;
     text-align: center;
     margin: 0;
-    padding: 0;    
-    background-color: rgba(166,124,84,0.4);
-    font-size: 2.5em;
-
-    
+    padding: 0;
+    background-color: rgba(166, 124, 84, 0.4);
+    font-size: 1.2em;
 }
+
+h2 {
+    text-align: center;
+    font-family: "Lexend Deca", sans-serif;
+    font-size: larger;
+}
+
 .background-image {
-    /* Set the background image */
+    /* displays the background image over the first 'page' with it covering the screen  */
     background-image: url('images/coffeeBackground.jpeg');
     height: 100vh;
-    /* Ensure the image covers the entire div */
     background-size: cover;
-    
-    /* Center the background image */
     background-position: center;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,21 +28,22 @@ body {
 }
 
 img {
-    align-items:center;
+    /* provides a size and border the the images while aligning them in the center  */
+    align-items: center;
     border: 4px solid brown;
     border-radius: 25%;
-    /* padding: 5px; */
-    width: 75%;
+    width: 100px;
+    height: 100px;
 }
 
 h1 {
-    font-family:"Jaro", sans-serif;
-    text-align:center;
+    /* the heading font and alignment */
+    font-family: "Jaro", sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
-    
 }
-/* Centering the main content */
+
 .center-content {
     position: absolute;
     top: 50%;
@@ -77,37 +51,46 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-/* Styling for the site name */
 .site-name {
-    font-size: 48px;
+    /* sizing of the title of the page */
+    font-size: 6em;
     font-weight: bold;
 }
 
-/* Styling for the "Add Tracker" button */
-.add-tracker-btn {
+.add-tracker-btn, .clear-all-btn {
+    /* this is for the add tracker and clear all buttons */
     font-size: 16px;
     font-style: italic;
     margin-top: 20px;
     padding: 10px 20px;
     border: none;
-    background-color: #4CAF50;
     color: white;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+}
+/* the following four describe the hovering colour changes */
+.add-tracker-btn {
+    background-color: #4CAF50;
 }
 
 .add-tracker-btn:hover {
     background-color: #3d8e41;
 }
 
-/* Styling for the section with the coffee list */
-.coffee-list-section {
-    margin-top: 10%;
-    display: none; /* Initially hidden, can be toggled with JavaScript */
+.clear-all-btn {
+    background-color: #f44336;
 }
 
-/* Styling for the search bar */
+.clear-all-btn:hover {
+    background-color: #d32f2f;
+}
+
+.coffee-list-section {
+    margin-top: 5%;
+    display: none;
+}
+/* search bar display details to keep it within the center of the page */
 #searchBar {
     width: 80%;
     padding: 10px;
@@ -116,46 +99,44 @@ h1 {
     border-radius: 5px;
 }
 
-/* Styling for the sort options dropdown */
 #sortOptions {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-/* Styling for the coffee list container */
+/* the coffee list which contains two columns (in web form) */
 #coffeeList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10%;
+    margin: 0 auto;
 }
 
-/* Styling individual coffee items */
 .coffee-item {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 15px;
-    margin: 10px;
-    width: 80%;
+    width: 100%;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    font-size: 0.8em;
+    align-items: center;
+    font-size: 1em;
 }
 
 .coffee-item img {
     width: 100px;
     height: 100px;
     object-fit: cover;
+    margin-left: 20px;
 }
 
 .coffee-details {
     flex-grow: 1;
+    padding-right: 20px;
 }
 
 .coffee-details p {
@@ -167,7 +148,6 @@ h1 {
     text-align: center;
 }
 
-/* Styling for the down arrow button */
 .down-arrow {
     font-size: 32px;
     border: none;
@@ -176,26 +156,9 @@ h1 {
     vertical-align: bottom;
     margin-top: 90vh;
 }
-/* Styling for the "Clear All" button */
-.clear-all-btn {
-    font-size: 16px;
-    font-style: italic;
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #f44336;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
 
-.clear-all-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* Shaking animation */
 @keyframes shake {
+    /* this was built using generative ai to create a shaking effect on the images when hovered over. */
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
     20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -207,10 +170,35 @@ h1 {
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
-  
-  /* Apply the shaking animation on hover */
-  .coffee-item img:hover {
-    animation: shake 0.5s; /* Animation duration */
-    animation-iteration-count: infinite; /* Repeat the animation indefinitely */
-  }
+}
+
+.coffee-item img:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+.highlight {
+    font-weight: bolder;
+}
+
+.coffeeKey {
+    margin-bottom: 20%;
+}
+
+/* Media Query for larger screens */
+@media (min-width: 768px) {
+    #coffeeList {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 10%;
+        gap: 10%;
+        margin-right: 5%;
+
+    }
+}
+
+@media (max-width: 767px) {
+    #coffeeList {
+        grid-template-columns: 1fr;
+        padding: 0 5%;
+    }
+}

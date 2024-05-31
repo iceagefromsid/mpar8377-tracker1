@@ -14,23 +14,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
+<!-- adds a background image over the first page  -->
 <body>
-  <div class="background-image">
+  <div class="background-image"> 
+    <!-- down arrow to push the page down to results section  -->
     <button class="down-arrow" onclick="scrollDown()">↓</button>  
   </div>
-  <div>
-    <img id = coffeeKey src = "images/coffeeKey.jpeg">
-  </div>
+  
   
   <div class="center-content">
+    <!-- contains all the buttons and title of the page  -->
     <h1 class="site-name">Coffee Counter</h1>
     <button class="add-tracker-btn" onclick="openForm()">Add a new tracker!</button>
     <button class="clear-all-btn" onclick="clearAllCoffees()">Clear All</button>
   </div>
 
   <div class="coffee-list-section" id="coffeeListSection">
+    <!-- displays the results and the search and sort function -->
+    <h1 id = 'Results'>Results</h2>
     <input type="text" id="searchBar" placeholder="Search for a coffee...">
     <select id="sortOptions" onchange="sortCoffees()">
       <option value="ratingHighLow">Rating: High - Low</option>
