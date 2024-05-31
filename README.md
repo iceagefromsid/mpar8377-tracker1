@@ -1,52 +1,10 @@
 # Node Server
 Development Checklist:
 
-Code Quality:
- - Code is impeccably formatted with proper indentation, spacing, and comprehensive comments.
- - Comments provide clear explanations of the code's functionality.
- - Outstanding use of HTML, CSS, and JavaScript with no discernible areas for optimization.
- - Mastery of efficient and maintainable code development demonstrated.
+## Overview:
+Coffee Counter is a simple, single page application thats main purpose is to track a users coffee intake and experience. It follows the user input based on Date, Time, Location, Coffee Type and overall Rating to create a user experience list allowing the user to better understand their own personal coffee experience. HTML, CSS and Javascript alongside a local storage were implemented in order for this SPA to work effectively.
 
-Version Control:
- - Use of version control (e.g., Git) for code repository hosting.
- - Thorough and well-organized commit history reflecting professionalism and attention to detail.
-
-Architecture and Responsiveness:
- - Implementation of single-page architecture.
- - Exceptional quality of responsiveness ensuring an exceptional user experience on both mobile and desktop devices.
-
-Prototype Checklist:
-
-Compliance with Requirements:
- - Prototype meets all requirements of the assessment as described in the brief.
- - Scope of the tracking app is expertly refined and highly cohesive.
-
-Interaction Complexity:
- - Complexity of interaction is masterfully crafted, providing a beneficial and enjoyable user experience.
-
-User Interface:
- - Users can intuitively add, view, and delete tracked items with a highly polished and user-friendly interface.
- - Flawless data model implementation with persistence between sessions.
-
-Development Documentation:
-
-Depth and Clarity:
- - Documentation demonstrates exceptional depth, organization, and clarity.
- - In-depth and insightful documentation of the development process, iterations, and improvements.
- - Meticulous and easy-to-follow outline of application configuration and deployment procedures.
-
-Guidance for Future Developers:
- - Exceptional guidance for future developers to understand and build upon the work.
- - Well-considered recommendations for further improvements or extensions.
-
-UI Design:
-
-Style and Design Principles:
- - The prototype exhibits exceptional style and application of design principles.
- - Consistent use of typography, color schemes, and branding elements.
- - Relevant UI design trends and best practices are expertly incorporated.
-
-Planning:
+## Planning:
 * = tbd
 - create a single page
     - contains a large bolded text stating the name of the site (CoffeeCounter) in the center of the screen with the add a new tracker button underneath it in small italics font allowing the user to open the pop-up input menu which lets them input data.
@@ -61,11 +19,34 @@ Planning:
     - change the pop-up window to match the text and style of the page
     - make the pop-up window have mandatory inputs (if possible)
 
-References:
+## Features:
+- Pop-up window: used to take in the user inputs through a form style submission
+- Clear all button: used to clear the previously saved data
+- Scroll Button: button which scrolls the screen down fully for the user
+- Sort and Search functions: both functions offer the user an easy way to find and sort their coffee by different metrics.
+- Result Display: shows the results of the users input in a simple form with an image representing their chosen coffee alongside the details of the coffee experience.
+
+## Setup:
+No setup is required.
+
+## Usage:
+For easy usage, it is recommeneded for the user to right-click on the index.html file and open the project with Live Server (in VS Code).
+
+## Version Control:
+This project uses git and github to track the changes made to the development of the project. Please visit the github repository here:https://github.com/iceagefromsid/mpar8377-tracker1.git
+
+
+
+
+## References:
+- https://fonts.google.com/selection/embed 
+- https://www.w3schools.com/ 
+- https://www.thirdwavecoffeeroasters.com
+
+## AI Acknowledgements:
 - Pop-Up Window: chatgpt got was used alongside WS3 Schools to build the pop-up window. The prompt given was as follows "please build a pop-up window which will house the following functions:" (with the functions currently within the window.).
 - Storing of Data: Generative AI was used alongside personal research to implement the storing of data and the following usage of said data. prompt = "please show me a way to store user input data and then to use it."
 - Shake for images: generative AI was used to add a shaking animation over the images when the user hovers over them. the prompt given was along the lines of " How would i go about making an image shake in javascript css."
 - The data storage and facilitating: The data storage was built alongside w3s schools and generative AI in order to create a fully usable system. the prompt which was imputted into generative ai was " how would I store data from a user input field and then output it". I also used w3s schools to gain more background knowledge about the actual storage of it.
-- https://fonts.google.com/selection/embed 
-- https://www.w3schools.com/ 
-- https://www.thirdwavecoffeeroasters.com
+
+
